@@ -1,0 +1,47 @@
+﻿@using GovUkDesignSystem
+@using GovUkDesignSystem.GovUkDesignSystemComponents
+@model HaveYouReceivedACardViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section BeforeMain
+{
+    @Html.GovUkBackLink(
+        new BackLinkViewModel
+        {
+            Href = Url.Action("DoYouHaveAChildQuestionGet", "Home"),
+            OverrideWithJavascript = true
+        })
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" action="@Url.Action("HaveYouReceivedACardPost", "Home")">
+
+            @(Html.GovUkErrorSummary())
+
+            @(Html.GovUkRadiosFor(
+                m => m.HaveYouReceivedACard,
+                new FieldsetViewModel
+                {
+                    Legend = new LegendViewModel
+                    {
+                        Text = "Have you received a Mother's Day card this year?",
+                        IsPageHeading = true,
+                        Classes = "govuk-fieldset__legend--xl"
+                    }
+                }
+            ))
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+

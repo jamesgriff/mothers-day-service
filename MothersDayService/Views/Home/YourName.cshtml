@@ -1,0 +1,44 @@
+﻿@using GovUkDesignSystem
+@using GovUkDesignSystem.GovUkDesignSystemComponents
+@model YourNameViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section BeforeMain
+{
+    @Html.GovUkBackLink(
+        new BackLinkViewModel
+        {
+            Href = Url.Action("HaveYouReceivedACardGet", "Home"),
+            OverrideWithJavascript = true
+        })
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" action="@Url.Action("YourNamePost", "Home")">
+
+            @(Html.GovUkErrorSummary())
+
+            @(Html.GovUkTextInputFor(
+                m => m.YourFirstName,
+                new LabelViewModel
+                {
+                    Text = "What is your first name?",
+                    IsPageHeading = true,
+                    Classes = "govuk-label--xl"
+                }
+            ))
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+

@@ -1,0 +1,54 @@
+﻿@using GovUkDesignSystem
+@using GovUkDesignSystem.GovUkDesignSystemComponents
+@model GreetingsViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section BeforeMain
+{
+    @Html.GovUkBackLink(
+        new BackLinkViewModel
+        {
+            Href = Url.Action("ChildNameGet", "Home"),
+            OverrideWithJavascript = true
+        })
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" action="@Url.Action("GreetingsPost", "Home")">
+            
+            @(Html.HiddenFor(m => m.YourFirstName))
+            @(Html.HiddenFor(m => m.ChildFirstName))
+
+            @(Html.GovUkErrorSummary())
+
+            @(Html.GovUkCheckboxesFor(
+                m => m.Greetings,
+                new FieldsetViewModel
+                {
+                    Legend = new LegendViewModel
+                    {
+                        Text = "Which of the following apply?",
+                        IsPageHeading = true,
+                        Classes = "govuk-fieldset__legend--xl"
+                    }
+                },
+                new HintViewModel
+                {
+                    Text = "Select all that apply"
+                }
+            ))
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+

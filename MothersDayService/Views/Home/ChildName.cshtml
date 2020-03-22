@@ -1,0 +1,47 @@
+﻿@using GovUkDesignSystem
+@using GovUkDesignSystem.GovUkDesignSystemComponents
+@using Microsoft.AspNetCore.Mvc
+@model ChildNameViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section BeforeMain
+{
+    @Html.GovUkBackLink(
+        new BackLinkViewModel
+        {
+            Href = Url.Action("YourNameGet", "Home"),
+            OverrideWithJavascript = true
+        })
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" action="@Url.Action("ChildNamePost", "Home")">
+            
+            @(Html.HiddenFor(m => m.YourFirstName))
+
+            @(Html.GovUkErrorSummary())
+
+            @(Html.GovUkTextInputFor(
+                m => m.ChildFirstName,
+                new LabelViewModel
+                {
+                    Text = "What is your child's first name?",
+                    IsPageHeading = true,
+                    Classes = "govuk-label--xl"
+                }
+            ))
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
