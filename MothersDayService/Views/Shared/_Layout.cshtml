@@ -49,8 +49,8 @@
         @(Html.GovUkPhaseBanner(new PhaseBannerViewModel
         {
             Phase = "Beta",
-            Html = @<text>This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.</text>
-}))
+            Html = @<text>This is a new service – your <a class="govuk-link" href="mailto:jamesgriff@jamesgriff.co.uk">feedback</a> will help us to improve it.</text>
+        }))
 
         @(RenderSection("BeforeMain", false))
 
@@ -67,18 +67,8 @@
             {
                 new FooterLinksViewModel
                 {
-                    Text = "Contact Us",
-                    Href = "#"
-                },
-                new FooterLinksViewModel
-                {
-                    Text = "Cookies",
-                    Href = "#"
-                },
-                new FooterLinksViewModel
-                {
-                    Text = "Privacy Policy",
-                    Href = "#"
+                    Text = "About this website",
+                    Href = Url.Action("About", "Home")
                 },
             }
         }

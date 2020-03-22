@@ -14,6 +14,12 @@ namespace MothersDayService.Controllers
             return View("Index");
         }
 
+        [HttpGet("about")]
+        public IActionResult About()
+        {
+            return View("About");
+        }
+
         [HttpGet("do-you-have-a-child")]
         public IActionResult DoYouHaveAChildQuestionGet()
         {
